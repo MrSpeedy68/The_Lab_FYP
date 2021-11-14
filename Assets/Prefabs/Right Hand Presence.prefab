@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 298142116953644583}
   - component: {fileID: 298142116953644600}
   m_Layer: 0
-  m_Name: Right Hand Presence 1
+  m_Name: Right Hand Presence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
