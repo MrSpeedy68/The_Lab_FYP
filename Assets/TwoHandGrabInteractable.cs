@@ -15,7 +15,6 @@ public class TwoHandGrabInteractable : XRGrabInteractable
 
 
 
-
     void Start()
     {
         foreach (var item in secondHandGrabpoints) // Add listiners to all the attach point on when they are grabbed and released
