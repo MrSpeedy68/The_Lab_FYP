@@ -5,6 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ClimbInteractable : XRBaseInteractable
 {
+    private ContinuousMovement _continuousMovement;
+    
     protected override void OnSelectEntered(XRBaseInteractor interactor)
     {
         base.OnSelectEntered(interactor);
@@ -12,6 +14,10 @@ public class ClimbInteractable : XRBaseInteractable
         if(interactor is XRDirectInteractor)
         {
             ClimbingScript.climbingHand = interactor.GetComponent<XRController>();
+
+            _continuousMovement = interactor.GetComponentInParent<ContinuousMovement>();
+
+            _continuousMovement.isGrounded = true;
         }    
     }
 
@@ -27,4 +33,5 @@ public class ClimbInteractable : XRBaseInteractable
             }
         }
     }
+    
 }

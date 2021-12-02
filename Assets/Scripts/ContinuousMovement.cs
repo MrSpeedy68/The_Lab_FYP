@@ -11,6 +11,7 @@ public class ContinuousMovement : MonoBehaviour
     public float gravity = -9.81f;
     public LayerMask groundLayer;
     public float additionalHeight = 0.2f;
+    public bool isGrounded;
 
     private float fallingSpeed;
     private XRRig rig;
@@ -38,7 +39,7 @@ public class ContinuousMovement : MonoBehaviour
         character.Move(direction * Time.fixedDeltaTime * speed);
 
         //Gravity
-        bool isGrounded = CheckIfGrounded();
+        isGrounded = CheckIfGrounded();
         if(isGrounded)
         {
             fallingSpeed = 0;
