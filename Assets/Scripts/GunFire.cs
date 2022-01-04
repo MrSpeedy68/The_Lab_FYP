@@ -15,19 +15,8 @@ public class GunFire : MonoBehaviour
     {
         GameObject spawnedBullet = Instantiate(bullet, barrel.position, barrel.rotation);
         spawnedBullet.GetComponent<Rigidbody>().velocity = speed * barrel.forward;
+        audioSource.volume = 50f;
         audioSource.PlayOneShot(audioClip);
         Destroy(spawnedBullet, 5);
     }
-
-    // private void OnCollisionEnter(Collision other)
-    // {
-    //     if (other.rigidbody != null)
-    //     {
-    //         Vector3 hitVector = (other.transform.position - transform.position).normalized;
-    //     
-    //         other.rigidbody.AddForce(-hitVector * other.rigidbody.mass * 100f);
-    //         
-    //         Debug.Log("Hit Rigid body and added force");
-    //     }
-    // }
 }
