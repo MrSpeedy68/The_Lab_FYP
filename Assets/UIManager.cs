@@ -8,9 +8,9 @@ public class UIManager : MonoBehaviour
 
     public void NextLevel()
     {
-        if (SceneManager.sceneCount > SceneManager.GetActiveScene().buildIndex + 1)
-        {
+       // if (SceneManager.sceneCount > SceneManager.GetActiveScene().buildIndex + 1)
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        Debug.Log("Next Scene");
     }
 }

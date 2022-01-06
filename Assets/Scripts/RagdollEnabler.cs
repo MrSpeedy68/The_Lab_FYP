@@ -23,7 +23,7 @@ public class RagdollEnabler : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Weapon") && other.relativeVelocity.magnitude > 2f)
+        if (other.gameObject.CompareTag("Weapon") && other.relativeVelocity.magnitude > 1f)
         {
             print("Collision Entered with Ragdoll");
             float damageDealt = other.relativeVelocity.magnitude * other.rigidbody.mass;
