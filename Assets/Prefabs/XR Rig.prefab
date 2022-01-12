@@ -2112,6 +2112,8 @@ MonoBehaviour:
     m_Bits: 128
   additionalHeight: 0.2
   isGrounded: 0
+  isOffGround: 0
+  fallingSpeed: 0
 --- !u!143 &2710129955408895211
 CharacterController:
   m_ObjectHideFlags: 0

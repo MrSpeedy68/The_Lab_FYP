@@ -12,8 +12,9 @@ public class ContinuousMovement : MonoBehaviour
     public LayerMask groundLayer;
     public float additionalHeight = 0.2f;
     public bool isGrounded;
+    public bool isOffGround = false;
 
-    private float fallingSpeed;
+    [SerializeField] private float fallingSpeed;
     private XRRig rig;
     private Vector2 inputAxis;
     private CharacterController character;
@@ -44,7 +45,7 @@ public class ContinuousMovement : MonoBehaviour
         {
             fallingSpeed = 0;
         }
-        else
+        else if (!isOffGround)
         {
             fallingSpeed += gravity * Time.fixedDeltaTime;
         }
@@ -67,5 +68,10 @@ public class ContinuousMovement : MonoBehaviour
         bool hashit = Physics.SphereCast(rayStart, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
 
         return hashit;
+    }
+
+    public void ResetGravity()
+    {
+        fallingSpeed = 0;
     }
 }
