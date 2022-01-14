@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 public class LocomotionController : MonoBehaviour
 {
+    [SerializeField] private bool enableRight = true;
+    [SerializeField] private bool enableLeft = true;
+    
     public XRController rightTeleportRay;
     public XRController leftTeleportRay;
     public InputHelpers.Button teleportActivationButton;
@@ -23,13 +26,13 @@ public class LocomotionController : MonoBehaviour
         int index = 0;
         bool validTarget = false;
 
-        if (leftTeleportRay)
+        if (leftTeleportRay && enableLeft)
         {
             bool isLeftInteractorRayHovering = leftInteractorRay.TryGetHitInfo(out pos, out norm, out index, out validTarget);
             leftTeleportRay.gameObject.SetActive(EnableLeftTeleport && CheckIfActivated(leftTeleportRay) && !isLeftInteractorRayHovering);
         }
 
-        if (rightTeleportRay)
+        if (rightTeleportRay && enableRight)
         {
             bool isRightInteractorRayHovering = rightInteractorRay.TryGetHitInfo(out pos, out norm, out index, out validTarget);
             rightTeleportRay.gameObject.SetActive(EnableRightTeleport && CheckIfActivated(rightTeleportRay) && !isRightInteractorRayHovering);

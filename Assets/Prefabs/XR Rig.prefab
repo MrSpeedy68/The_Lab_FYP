@@ -2086,6 +2086,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01453d31d2152c449dec32777d5bcc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableRight: 1
+  enableLeft: 1
   rightTeleportRay: {fileID: 2710129954415304577}
   leftTeleportRay: {fileID: 2710129954397627890}
   teleportActivationButton: 11
