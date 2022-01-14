@@ -68,7 +68,7 @@ public class HandPresence : MonoBehaviour
 
         foreach (var item in devices)
         {
-            Debug.Log(item.name + item.characteristics);
+            Debug.Log(item.name);
         }
 
         if (devices.Count > 0)
