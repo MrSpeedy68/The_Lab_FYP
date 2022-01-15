@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Weapon
   - Bullet
+  - Magazine
   layers:
   - Default
   - TransparentFX
