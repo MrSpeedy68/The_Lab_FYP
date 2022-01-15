@@ -6,15 +6,34 @@ using UnityEngine;
 public class GunComponent : MonoBehaviour
 {
 
-    [SerializeField] private Transform magAttachPoint;
+    public float speed = 60f;
+    public GameObject bullet;
+    public Transform barrel;
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+    public GameObject magazineSocket;
 
-    private void OnTriggerEnter(Collider other)
+    private MagazineComponent _magazineComponent;
+    public void Fire()
     {
-        if (other.CompareTag("Magazine"))
+        _magazineComponent = magazineSocket.GetComponentInChildren<MagazineComponent>();
+
+        if (_magazineComponent != null)
         {
-            other.transform.position = magAttachPoint.position;
-            other.attachedRigidbody.isKinematic = true;
-            other.transform.parent = gameObject.transform;
+            Debug.Log(_magazineComponent.ammoCount);
+
+            if (_magazineComponent.ammoCount > 0)
+            {
+                GameObject spawnedBullet = Instantiate(bullet, barrel.position, barrel.rotation);
+                spawnedBullet.GetComponent<Rigidbody>().velocity = speed * barrel.forward;
+                audioSource.volume = 50f;
+                audioSource.PlayOneShot(audioClip);
+                Destroy(spawnedBullet, 5);
+                _magazineComponent.ammoCount--;
+            }
         }
+        
+        
+
     }
 }
