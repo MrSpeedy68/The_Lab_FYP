@@ -234,6 +234,9 @@ MonoBehaviour:
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 4294967295
+  m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
     m_PersistentCalls:
@@ -245,6 +248,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
   m_SelectEntered:
@@ -363,6 +372,8 @@ MonoBehaviour:
   speed: 40
   bullet: {fileID: 5557419834590653712, guid: 6e7e294040bf7394aa2649d1a6ead79d, type: 3}
   barrel: {fileID: 334780185533988397}
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!1 &5321001663437100354
 GameObject:
   m_ObjectHideFlags: 0

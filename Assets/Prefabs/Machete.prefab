@@ -97,6 +97,9 @@ MonoBehaviour:
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 4294967295
+  m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
     m_PersistentCalls:
@@ -108,6 +111,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
   m_SelectEntered:
@@ -285,19 +294,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4174777790881422, guid: 8fa9d2ab04ea0484ebd59b47073ac325, type: 3}
   m_PrefabInstance: {fileID: 8130408117148989903}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &8130408117148989901
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8129590209293166961}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3036496, y: 3.9613457, z: 34.894146}
-  m_Center: {x: 0.03470468, y: -0.19606587, z: 4.477435}
 --- !u!65 &8130408117148989890
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -311,3 +307,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6734455, y: 2.895794, z: 8.822736}
   m_Center: {x: -1.545454e-17, y: -0.037297316, z: -17.454239}
+--- !u!65 &8130408117148989901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129590209293166961}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3036496, y: 3.9613457, z: 34.894146}
+  m_Center: {x: 0.03470468, y: -0.19606587, z: 4.477435}
