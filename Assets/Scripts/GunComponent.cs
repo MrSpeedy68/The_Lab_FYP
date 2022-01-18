@@ -29,7 +29,7 @@ public class GunComponent : MonoBehaviour
                 audioSource.volume = 50f;
                 audioSource.PlayOneShot(audioClip);
                 Destroy(spawnedBullet, 5);
-                _magazineComponent.ammoCount--;
+                _magazineComponent.RemoveBullet();
             }
         }
         

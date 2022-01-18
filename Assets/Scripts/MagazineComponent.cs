@@ -1,22 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MagazineComponent : MonoBehaviour
 {
-
-    //public List<GameObject> meshes;
-    public int ammoCount = 20;
-
-    public enum WeaponType
-    {
-        Rifle,
-        Pistol
-    };
+    public int ammoCount = 0;
     
+    [SerializeField] private TMP_Text _ammoText;
+    
+    private int _maxAmmo = 20;
+
     private void Start()
     {
-        
+        ammoCount = _maxAmmo;
+
+        _ammoText.text = ammoCount + "/" + _maxAmmo;
+    }
+
+    public void RemoveBullet()
+    {
+        ammoCount--;
+        _ammoText.text = ammoCount + "/" + _maxAmmo;
     }
 }
