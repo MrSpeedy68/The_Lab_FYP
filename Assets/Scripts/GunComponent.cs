@@ -10,7 +10,12 @@ public class GunComponent : MonoBehaviour
     public GameObject bullet;
     public Transform barrel;
     public AudioSource audioSource;
-    public AudioClip audioClip;
+    
+    public AudioClip gunFireAudio;
+    public AudioClip gunEmptyAudio;
+    public AudioClip gunMagInAudio;
+    public AudioClip gunMagOutAudio;
+    
     public GameObject magazineSocket;
 
     private MagazineComponent _magazineComponent;
@@ -27,13 +32,22 @@ public class GunComponent : MonoBehaviour
                 GameObject spawnedBullet = Instantiate(bullet, barrel.position, barrel.rotation);
                 spawnedBullet.GetComponent<Rigidbody>().velocity = speed * barrel.forward;
                 audioSource.volume = 50f;
-                audioSource.PlayOneShot(audioClip);
+                audioSource.PlayOneShot(gunFireAudio);
                 Destroy(spawnedBullet, 5);
                 _magazineComponent.RemoveBullet();
             }
+            else audioSource.PlayOneShot(gunEmptyAudio);
         }
-        
-        
+        else audioSource.PlayOneShot(gunEmptyAudio);
+    }
 
+    public void PlayMagIn()
+    {
+        audioSource.PlayOneShot(gunMagInAudio);
+    }
+    
+    public void PlayMagOut()
+    {
+        audioSource.PlayOneShot(gunMagOutAudio);
     }
 }
