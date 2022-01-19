@@ -18,6 +18,8 @@ public class GunComponent : MonoBehaviour
     public AudioClip gunMagOutAudio;
     
     public GameObject magazineSocket;
+    public GameObject casing;
+    public Transform ejectTransform;
 
     private MagazineComponent _magazineComponent;
     private bool _isActive = false;
@@ -37,6 +39,7 @@ public class GunComponent : MonoBehaviour
                 audioSource.PlayOneShot(gunFireAudio);
                 Destroy(spawnedBullet, 5);
                 _magazineComponent.RemoveBullet();
+                EjectCasing();
             }
             else audioSource.PlayOneShot(gunEmptyAudio);
         }
@@ -66,9 +69,22 @@ public class GunComponent : MonoBehaviour
         }
     }
 
+    private void EjectCasing()
+    {
+        var ejectedCasing = Instantiate(casing, ejectTransform.position, Quaternion.Euler(90f,0f,0f));
+        var rb = ejectedCasing.GetComponent<Rigidbody>();
+        rb.AddForce(ejectedCasing.transform.right * 300);
+        Destroy(ejectedCasing, 3f);
+    }
+
     public void WeaponState()
     {
         _isActive = !_isActive;
+    }
+
+    public void ReleaseWeapon()
+    {
+        _isActive = false;
     }
 
     public void PlayMagIn()
