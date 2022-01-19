@@ -507,5 +507,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11183a65e3e11264ab0ebb8e25a90714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoCount: 20
+  ammoCount: 30
   _ammoText: {fileID: 6717450919064071714}
