@@ -38,6 +38,7 @@ public class GunComponent : MonoBehaviour
                 TrailRenderer trail = Instantiate(bulletTrail, bulletSpawnPoint.position, Quaternion.identity);
 
                 StartCoroutine(SpawnTrail(trail, hit));
+                CheckHit(hit);
                 
                 audioSource.volume = 50f;
                 audioSource.PlayOneShot(gunFireAudio);
@@ -67,6 +68,16 @@ public class GunComponent : MonoBehaviour
         Instantiate(impactParticleSystem, Hit.point, Quaternion.LookRotation(Hit.normal));
         
         Destroy(Trail.gameObject, Trail.time);
+    }
+
+    private void CheckHit(RaycastHit hit)
+    {
+        if (hit.collider.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Enemy Detected");
+            RagdollEnabler ragdollEnabler = hit.collider.gameObject.GetComponent<RagdollEnabler>();
+            ragdollEnabler.TakeDamage(10f);
+        }
     }
     
     private void Start()

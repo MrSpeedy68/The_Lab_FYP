@@ -6,11 +6,11 @@ using UnityEngine;
 public class RagdollEnabler : MonoBehaviour
 {
     public float ragdollForce = 3000f;
-    public float maxHealth;
+    [SerializeField] private float maxHealth;
     public HealthBar healthBar;
 
 
-    private float currHealth;
+    public float currHealth;
     private Rigidbody[] rigRigidbodies;
     // Start is called before the first frame update
     void Start()
@@ -46,8 +46,12 @@ public class RagdollEnabler : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        currHealth -= damage;
-        healthBar.UpdateHealth(currHealth / maxHealth);
+        if (currHealth > 0)
+        {
+            currHealth -= damage;
+            healthBar.UpdateHealth(currHealth / maxHealth);
+        }
+        else EnableRagdoll();
     }
 
     private void DisableRagdoll()
