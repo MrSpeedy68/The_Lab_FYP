@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GunComponent : MonoBehaviour
 {
     [SerializeField] private float fireRate = 12f; // How many rounds fired per second average fire rate = 700/min
+    [SerializeField] private float bulletForce = 100f;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private Transform ejectTransform;
     
@@ -77,6 +78,12 @@ public class GunComponent : MonoBehaviour
             Debug.Log("Enemy Detected");
             RagdollEnabler ragdollEnabler = hit.collider.gameObject.GetComponent<RagdollEnabler>();
             ragdollEnabler.TakeDamage(10f);
+        }
+
+
+        if (hit.rigidbody)
+        {
+            hit.rigidbody.AddForce(hit.point.normalized * bulletForce);
         }
     }
     
