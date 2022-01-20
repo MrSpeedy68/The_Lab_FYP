@@ -9,12 +9,12 @@ public class GunMagazineSocket : XRSocketInteractor
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
-        args.interactable.gameObject.transform.parent = gameObject.transform;
+        args.interactableObject.transform.parent = gameObject.transform;
     }
 
     protected override void OnSelectExiting(SelectExitEventArgs args)
     {
         base.OnSelectExiting(args);
-        args.interactable.gameObject.transform.parent = null;
+        args.interactableObject.transform.parent = null;
     }
 }
