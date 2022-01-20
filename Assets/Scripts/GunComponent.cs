@@ -6,21 +6,18 @@ using UnityEngine.UI;
 
 public class GunComponent : MonoBehaviour
 {
-
-    [SerializeField] private float bulletSpeed = 60f;
     [SerializeField] private float fireRate = 12f; // How many rounds fired per second average fire rate = 700/min
-    [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletSpawnPoint;
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private Transform ejectTransform;
     
+    [SerializeField] private GameObject magazineSocket;
+    [SerializeField] private GameObject casing;
+    
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip gunFireAudio;
     [SerializeField] private AudioClip gunEmptyAudio;
     [SerializeField] private AudioClip gunMagInAudio;
     [SerializeField] private AudioClip gunMagOutAudio;
-    
-    [SerializeField] private GameObject magazineSocket;
-    [SerializeField] private GameObject casing;
-    [SerializeField] private Transform ejectTransform;
 
     [SerializeField] private TrailRenderer bulletTrail;
     [SerializeField] private ParticleSystem shootParticleSystem;
@@ -38,11 +35,9 @@ public class GunComponent : MonoBehaviour
         {
             if (Physics.Raycast(bulletSpawnPoint.position, bulletSpawnPoint.forward, out RaycastHit hit, float.MaxValue, _mask))
             {
-                // GameObject spawnedBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-                // spawnedBullet.GetComponent<Rigidbody>().velocity = bulletSpeed * bulletSpawnPoint.forward;
-                // Destroy(spawnedBullet, 5);
+                TrailRenderer trail = Instantiate(bulletTrail, bulletSpawnPoint.position, Quaternion.identity);
 
-                StartCoroutine(SpawnTrail(bulletTrail, hit));
+                StartCoroutine(SpawnTrail(trail, hit));
                 
                 audioSource.volume = 50f;
                 audioSource.PlayOneShot(gunFireAudio);

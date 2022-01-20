@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4247089759420870208}
   - component: {fileID: 4052428646073646566}
   - component: {fileID: 4051851740085951352}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: HitEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4249801669040030828}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.6991543, y: -0.88, z: 13.996027}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 4246826725183110920}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!198 &4052428646073646566
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4840,7 +4840,7 @@ GameObject:
   - component: {fileID: 4246826725183110920}
   - component: {fileID: 4053027645687180322}
   - component: {fileID: 4052041567014562378}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9723,7 +9723,7 @@ GameObject:
   - component: {fileID: 4246397088704860456}
   - component: {fileID: 4053058836739769980}
   - component: {fileID: 4052164996347569954}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14382,7 +14382,7 @@ GameObject:
   - component: {fileID: 4246861802678244628}
   - component: {fileID: 4052932172132218270}
   - component: {fileID: 4052093543247288336}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
