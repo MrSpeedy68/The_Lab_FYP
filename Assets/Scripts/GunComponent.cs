@@ -6,23 +6,25 @@ using UnityEngine;
 public class GunComponent : MonoBehaviour
 {
 
-    public float bulletSpeed = 60f;
-    public float fireRate = 12f; // How many rounds fired per second average fire rate = 700/min
-    public GameObject bullet;
-    public Transform barrel;
-    public AudioSource audioSource;
+    [SerializeField] private float bulletSpeed = 60f;
+    [SerializeField] private float fireRate = 12f; // How many rounds fired per second average fire rate = 700/min
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform barrel;
+    [SerializeField] private AudioSource audioSource;
     
-    public AudioClip gunFireAudio;
-    public AudioClip gunEmptyAudio;
-    public AudioClip gunMagInAudio;
-    public AudioClip gunMagOutAudio;
+    [SerializeField] private AudioClip gunFireAudio;
+    [SerializeField] private AudioClip gunEmptyAudio;
+    [SerializeField] private AudioClip gunMagInAudio;
+    [SerializeField] private AudioClip gunMagOutAudio;
     
-    public GameObject magazineSocket;
-    public GameObject casing;
-    public Transform ejectTransform;
+    [SerializeField] private GameObject magazineSocket;
+    [SerializeField] private GameObject casing;
+    [SerializeField] private Transform ejectTransform;
 
     private MagazineComponent _magazineComponent;
     private bool _isActive = false;
+    private float timeBeforeShooting;
+    
     public void Fire()
     {
         _magazineComponent = magazineSocket.GetComponentInChildren<MagazineComponent>();
@@ -46,7 +48,7 @@ public class GunComponent : MonoBehaviour
         else audioSource.PlayOneShot(gunEmptyAudio);
     }
 
-    private float timeBeforeShooting;
+
 
     private void Start()
     {
@@ -73,7 +75,7 @@ public class GunComponent : MonoBehaviour
     {
         var ejectedCasing = Instantiate(casing, ejectTransform.position, Quaternion.Euler(90f,0f,0f));
         var rb = ejectedCasing.GetComponent<Rigidbody>();
-        rb.AddForce(ejectedCasing.transform.right * 300);
+        rb.AddForce(ejectTransform.right.normalized * 300);
         Destroy(ejectedCasing, 3f);
     }
 
