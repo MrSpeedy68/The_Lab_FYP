@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -15,14 +16,14 @@ public class ContinuousMovement : MonoBehaviour
     public bool isOffGround = false;
 
     [SerializeField] private float fallingSpeed;
-    private XRRig rig;
+    private XROrigin rig;
     private Vector2 inputAxis;
     private CharacterController character;
 
     void Start()
     {
         character = GetComponent<CharacterController>();
-        rig = GetComponent<XRRig>();
+        rig = GetComponent<XROrigin>();
     }
 
     void Update()
@@ -34,7 +35,7 @@ public class ContinuousMovement : MonoBehaviour
     private void FixedUpdate()
     {
         CapsuleFollowHeadset();
-        Quaternion headYaw = Quaternion.Euler(0, rig.cameraGameObject.transform.eulerAngles.y, 0); //Get the rotation of the head
+        Quaternion headYaw = Quaternion.Euler(0, rig.Camera.transform.eulerAngles.y, 0); //Get the rotation of the head
         Vector3 direction = headYaw * new Vector3(inputAxis.x, 0, inputAxis.y); //always move towards the direction of the head
 
         character.Move(direction * Time.fixedDeltaTime * speed);
@@ -55,8 +56,8 @@ public class ContinuousMovement : MonoBehaviour
 
     void CapsuleFollowHeadset()
     {
-        character.height = rig.cameraInRigSpaceHeight + additionalHeight;
-        Vector3 capsuleCenter = transform.InverseTransformPoint(rig.cameraGameObject.transform.position);
+        character.height = rig.CameraInOriginSpaceHeight + additionalHeight;
+        Vector3 capsuleCenter = transform.InverseTransformPoint(rig.Camera.transform.position);
         character.center = new Vector3(capsuleCenter.x, character.height / 2 + character.skinWidth, capsuleCenter.z);
     }
 
