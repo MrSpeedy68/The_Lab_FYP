@@ -10,7 +10,6 @@ public class GunComponent : MonoBehaviour
     [SerializeField] private float bulletForce = 100f;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private Transform ejectTransform;
-    
     [SerializeField] private GameObject magazineSocket;
     [SerializeField] private GameObject casing;
     
