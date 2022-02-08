@@ -123,13 +123,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127806591460028396}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -2.46, z: 1.398}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000005066394}
+  m_LocalPosition: {x: -0.0000016248814, y: -2.4599993, z: 1.3979995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 780439317262743655}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &3576457928013167216
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +293,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8419324794162387441}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000058114523}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 2.631, y: -0.4723, z: 12.219}
   m_LocalScale: {x: 0.02679835, y: 0.02679835, z: 0.02679835}
   m_Children:
@@ -301,7 +301,7 @@ Transform:
   - {fileID: 7092807453761400173}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!33 &7770883528324621268
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -507,5 +507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11183a65e3e11264ab0ebb8e25a90714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoCount: 30
+  currentAmmoCount: 0
   _ammoText: {fileID: 6717450919064071714}
+  _maxAmmo: 30
