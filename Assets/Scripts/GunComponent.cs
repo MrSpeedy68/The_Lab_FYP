@@ -65,7 +65,9 @@ public class GunComponent : MonoBehaviour
             yield return null;
         }
         Trail.transform.position = Hit.point;
-        Instantiate(impactParticleSystem, Hit.point, Quaternion.LookRotation(Hit.normal));
+        
+        var impactPointParticle = Instantiate(impactParticleSystem, Hit.point, Quaternion.LookRotation(Hit.normal));
+        impactPointParticle.transform.parent = Hit.transform; //Setting the impact particle as parent of the impact incase it has a rigitbody and moves so the hit moves with the moved rb.
         
         Destroy(Trail.gameObject, Trail.time);
     }
@@ -84,6 +86,13 @@ public class GunComponent : MonoBehaviour
         {
             hit.rigidbody.AddForce(hit.point.normalized * bulletForce);
         }
+
+        if (hit.collider.gameObject.CompareTag("Target"))
+        {
+            Debug.Log("Hit Target Obj");
+            hit.transform.SendMessage("HitByRay");
+        }
+
     }
     
     private void Start()
