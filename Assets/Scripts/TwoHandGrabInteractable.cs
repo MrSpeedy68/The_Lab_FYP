@@ -84,9 +84,9 @@ public class TwoHandGrabInteractable : XRGrabInteractable
         base.OnSelectExited(args);
     }
 
-    public override bool IsSelectableBy(XRBaseInteractor interactor)
+    public override bool IsSelectableBy(IXRSelectInteractor interactor)
     {
-        bool isalreadygrabbed = selectingInteractor && !interactor.Equals(selectingInteractor);
+        bool isalreadygrabbed = isSelected && !interactor.Equals(interactorsSelecting);
         return base.IsSelectableBy(interactor) && !isalreadygrabbed;
     }
 }

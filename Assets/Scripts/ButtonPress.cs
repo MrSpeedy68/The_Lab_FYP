@@ -5,10 +5,7 @@ using UnityEngine;
 public class ButtonPress : MonoBehaviour
 {
     [SerializeField] private float initializationDistance = 0.05f;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip audioClip;
-    [SerializeField] private ParticleSystem particle;
-
+    
     private bool _isPressed = false;
     private Vector3 _initialPosition;
     
@@ -25,9 +22,7 @@ public class ButtonPress : MonoBehaviour
             {
                 _isPressed = !_isPressed;
                 
-                Debug.Log("Button Pressed!!!!");
-                audioSource.PlayOneShot(audioClip);
-                particle.Play();
+                OnButtonActive();
 
                 StartCoroutine("PressCooldown");
             }
@@ -40,5 +35,10 @@ public class ButtonPress : MonoBehaviour
         yield return new WaitForSeconds(1f);
         
         _isPressed = !_isPressed;
+    }
+
+    protected virtual void OnButtonActive()
+    {
+        
     }
 }
