@@ -44,5 +44,12 @@ public class MoveAtoB : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, A.position, step);
             }
         }
+        else ReturnToPosition();
+    }
+
+    void ReturnToPosition()
+    {
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, A.position, step);
     }
 }

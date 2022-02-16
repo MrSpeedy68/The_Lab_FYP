@@ -6,6 +6,7 @@ using UnityEngine;
 public class MoveableTarget : MonoBehaviour
 {
     private Animator _animator;
+    public bool isHit;
     
     private void Start()
     {
@@ -15,6 +16,7 @@ public class MoveableTarget : MonoBehaviour
     public void HitByRay()
     {
         _animator.SetTrigger("TargetHit");
+        isHit = true;
     }
     
 }
