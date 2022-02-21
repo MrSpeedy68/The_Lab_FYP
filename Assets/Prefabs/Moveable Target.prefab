@@ -30,8 +30,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4399015108339811928}
-  m_LocalRotation: {x: -0.49999994, y: 0.50000006, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.017557688, y: 1.9937901, z: -0.59414035}
+  m_LocalRotation: {x: -0.49999988, y: 0.5, z: 0.49999982, w: 0.5000004}
+  m_LocalPosition: {x: 0.017557688, y: 1.9937816, z: -0.5943425}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1730,7 +1730,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 726
+  m_VersionIndex: 735
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1951,7 +1951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4399015108913101900}
   - component: {fileID: 4399015108913101891}
-  - component: {fileID: 4399015109423412478}
+  - component: {fileID: 1773123665}
   m_Layer: 0
   m_Name: Moveable Target
   m_TagString: Untagged
@@ -1995,7 +1995,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4399015109423412478
+--- !u!114 &1773123665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2011,7 +2011,7 @@ MonoBehaviour:
   B: {fileID: 0}
   hitA: 0
   isMoving: 0
-  speed: 7
+  speed: 10
 --- !u!1 &4399015109391018874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2261,7 +2261,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2228
+  m_VersionIndex: 2237
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
