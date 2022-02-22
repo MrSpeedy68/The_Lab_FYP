@@ -9,7 +9,7 @@ public class PlayAudioOnColliderEnter : MonoBehaviour
     [SerializeField] private AudioClip audioClip;
     [SerializeField] private bool isPlayed;
     
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player") && !isPlayed)
         {

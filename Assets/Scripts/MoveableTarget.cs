@@ -22,9 +22,10 @@ public class MoveableTarget : MonoBehaviour
         {
             audioSource.PlayOneShot(audioClip);
         }
-        
-        _animator.SetTrigger("TargetHit");
+
         isHit = true;
+        _animator.SetBool("TargetHit", isHit);
+
     }
     
 }
