@@ -6,21 +6,24 @@ public class Footsteps : MonoBehaviour
 {
     private CharacterController _characterController;
     private AudioSource _audio;
+    private ContinuousMovement _continuousMovement;
 
     // Start is called before the first frame update
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        _audio = GetComponent<AudioSource>();
+        _continuousMovement = GetComponent<ContinuousMovement>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (_characterController.isGrounded == true && _characterController.velocity.magnitude > 2f &&
+        if (_continuousMovement.isGrounded && _characterController.velocity.magnitude > 2f &&
             _audio.isPlaying == false)
         {
-            _audio.volume = Random.Range(0.6f, 1f);
-            _audio.pitch = Random.Range(0.8f, 1.1f);
+            _audio.volume = Random.Range(0.1f, 0.3f);
+            _audio.pitch = Random.Range(0.8f, 1f);
             _audio.Play();
         } 
     }

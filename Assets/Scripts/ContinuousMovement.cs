@@ -18,11 +18,11 @@ public class ContinuousMovement : MonoBehaviour
     [SerializeField] private float fallingSpeed;
     private XROrigin rig;
     private Vector2 inputAxis;
-    private CharacterController character;
+    private CharacterController _character;
 
     void Start()
     {
-        character = GetComponent<CharacterController>();
+        _character = GetComponent<CharacterController>();
         rig = GetComponent<XROrigin>();
     }
 
@@ -38,7 +38,7 @@ public class ContinuousMovement : MonoBehaviour
         Quaternion headYaw = Quaternion.Euler(0, rig.Camera.transform.eulerAngles.y, 0); //Get the rotation of the head
         Vector3 direction = headYaw * new Vector3(inputAxis.x, 0, inputAxis.y); //always move towards the direction of the head
 
-        character.Move(direction * Time.fixedDeltaTime * speed);
+        _character.Move(direction * Time.fixedDeltaTime * speed);
 
         //Gravity
         isGrounded = CheckIfGrounded();
@@ -49,24 +49,23 @@ public class ContinuousMovement : MonoBehaviour
         else if (!isOffGround)
         {
             fallingSpeed += gravity * Time.fixedDeltaTime;
+            _character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
         }
-
-        character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
     }
 
     void CapsuleFollowHeadset()
     {
-        character.height = rig.CameraInOriginSpaceHeight + additionalHeight;
+        _character.height = rig.CameraInOriginSpaceHeight + additionalHeight;
         Vector3 capsuleCenter = transform.InverseTransformPoint(rig.Camera.transform.position);
-        character.center = new Vector3(capsuleCenter.x, character.height / 2 + character.skinWidth, capsuleCenter.z);
+        _character.center = new Vector3(capsuleCenter.x, _character.height / 2 + _character.skinWidth, capsuleCenter.z);
     }
 
     //A check to see if the player is on the ground
     bool CheckIfGrounded()
     {
-        Vector3 rayStart = transform.TransformPoint(character.center);
-        float rayLength = character.center.y + 0.01f;
-        bool hashit = Physics.SphereCast(rayStart, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
+        Vector3 rayStart = transform.TransformPoint(_character.center);
+        float rayLength = _character.center.y + 0.01f;
+        bool hashit = Physics.SphereCast(rayStart, _character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
 
         return hashit;
     }
