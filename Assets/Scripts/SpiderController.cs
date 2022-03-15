@@ -8,9 +8,9 @@ using Random = UnityEngine.Random;
 public class SpiderController : MonoBehaviour
 {
     public float speed;
-    public float angularSpeed;
     public bool isWalking = false;
-    public GameObject sp;
+    public int rayAmount;
+    public float castingDistance;
 
     private Rigidbody _rigidbody;
     private Animator _anim;
@@ -28,27 +28,28 @@ public class SpiderController : MonoBehaviour
 
     void FixedUpdate()
     {
-
-
+        //var pp = MoveToRandomWP();
+        
         _animationState = _anim.GetCurrentAnimatorStateInfo(0);
 
         if (_animationState.IsName("Patrolling"))
         {
-            if (Vector3.Distance(transform.position, _randTarget) < 1.0f)
-            {
-                _randTarget = MoveToRandomWP();
-            }
-            // float targetDir = Vector3.Angle(_randTarget, transform.forward);
-             // Debug.Log(targetDir);
+             if (Vector3.Distance(transform.position, _randTarget) < 0.5f)
+             {
+                 _randTarget = MoveToRandomWP();
+             }
+            
+            
+             //float targetDir = Vector3.Angle(_randTarget, transform.forward);
+             //Debug.Log(targetDir);
             
              //Quaternion lookAtLoc = Quaternion.LookRotation(_randTarget,transform.up);
              //_rigidbody.MoveRotation(lookAtLoc);
              
-             Debug.DrawLine(transform.position,_randTarget,Color.cyan);
+             
+            Debug.DrawLine(transform.position,_randTarget,Color.cyan);
 
             transform.position = Vector3.MoveTowards(transform.position, _randTarget, speed * Time.deltaTime);
-
-
         }
         
         // if (_rigidbody.velocity.magnitude < _speed)
@@ -62,50 +63,155 @@ public class SpiderController : MonoBehaviour
     
     private Vector3 MoveToRandomWP()
     {
-        Ray ray = new Ray();
-        RaycastHit hit;
-        ray.origin = transform.position;
         float distanceToObstacle = 0;
-        float castingDistance = 20;
-        do
+        List<Vector3> returnDir = new List<Vector3>();
+        Ray returnedRay = new Ray();
+        Random.InitState(Mathf.CeilToInt(Time.time));
+        
+        for (int i=0; i<4; i++)
         {
-            float randomDirectionX = Random.Range(-1, 1);
-            float randomDirectionZ = Random.Range(-1, 1);
-            ray.direction = transform.forward * randomDirectionZ + transform.right * randomDirectionX;
-            if (Physics.Raycast(ray.origin, ray.direction, out hit, castingDistance))
+            
+            RaycastHit hit;
+            Ray ray = new Ray();
+
+            switch (i)
             {
-                distanceToObstacle = hit.distance;
+                case 0:
+                    ray.direction = Vector3.forward;
+                    break;
+                case 1:
+                    ray.direction = Vector3.back;
+                    break;
+                case 2:
+                    ray.direction = Vector3.left;
+                    break;
+                case 3:
+                    ray.direction = Vector3.right;
+                    break;
             }
-            else distanceToObstacle = castingDistance;
             
-            Debug.DrawRay(ray.origin, ray.direction, Color.red);
+            ray.origin = transform.position;
             
-            //Debug.Log(ray.origin + ray.direction * (distanceToObstacle - 1));
-            return ray.origin + ray.direction * (distanceToObstacle - 1);
+            Debug.DrawRay(ray.origin,ray.direction,Color.red,30f);
             
-        } while (distanceToObstacle < 1.0f);
+            if (Physics.Raycast (ray, out hit)) {
+
+                Debug.Log(i + " " + hit.distance);
+                
+                if (hit.distance > 1.5f)
+                {
+                    distanceToObstacle = hit.distance;
+                    returnDir.Add(ray.origin + ray.direction * (distanceToObstacle - 1)); 
+                }
+            }
+        }
+        
+        Debug.Log(returnDir.Count);
+
+        Vector3 returnedVector = returnDir[Random.Range(0,returnDir.Count)];
+        return returnedVector;
     }
+    
+    
+    // private Vector3 MoveToRandomWP()
+    // {
+    //     float distanceToObstacle = 0;
+    //     Vector3 returnDir = new Vector3(0,0,0);
+    //     Ray returnedRay = new Ray();
+    //     
+    //     float angle = 0;
+    //     for (int i=0; i<rayAmount; i++)
+    //     {
+    //
+    //         float deg = angle * Mathf.Rad2Deg;
+    //         
+    //         float x = 100 * Mathf.Cos (deg);
+    //         float z = 100 * Mathf.Sin (deg);
+    //         angle += 2 * i * Mathf.PI / rayAmount;
+    //
+    //         RaycastHit hit;
+    //         Ray ray = new Ray();
+    //
+    //         ray.direction = new Vector3 (transform.position.x + x, transform.position.y + 0.2f, transform.position.z + z);
+    //         ray.origin = transform.position;
+    //         
+    //         Debug.DrawRay(ray.origin,ray.direction,Color.red,30f);
+    //         
+    //         if (Physics.Raycast (ray, out hit,castingDistance)) {
+    //
+    //             Debug.Log(i + " " + hit.distance);
+    //             if (hit.distance > distanceToObstacle)
+    //             {
+    //                 distanceToObstacle = hit.distance;
+    //                 returnDir = hit.point;
+    //             }
+    //         }
+    //     }
+    //
+    //     //Vector3 newDir = new Vector3(returnDir.x, returnDir.y, returnDir.z);
+    //     Debug.Log("Distance Returned" + distanceToObstacle);
+    //     return returnDir;
+    // }
+    
+    
+    
 
-    public int rayAmount = 6;
-
-    // private void FindNewWP()
+    // private Vector3 MoveToRandomWP()
+    // {
+    //     float distanceToObstacle = 0;
+    //     Vector3 returnDir = new Vector3(0,0,0);
+    //     
+    //     float angle = 0;
+    //     for (int i=0; i<rayAmount; i++) {
+    //         float x = Mathf.Cos (angle);
+    //         float z = Mathf.Sin (angle);
+    //         angle += 2 * Mathf.PI / rayAmount;
+    //
+    //         Vector3 dir = new Vector3 (transform.position.x + x*100, transform.position.y + 0.2f, transform.position.z + z*100);
+    //         RaycastHit hit;
+    //         Debug.DrawRay(transform.position + Vector3.up / 5, dir, Color.red,30f);
+    //         
+    //         if (Physics.Raycast (transform.position + Vector3.up / 5, dir, out hit, castingDistance)) {
+    //
+    //             Debug.Log(i + " " + hit.distance);
+    //             if (hit.distance > distanceToObstacle)
+    //             {
+    //                 distanceToObstacle = hit.distance;
+    //                 returnDir = hit.direction;
+    //             }
+    //         }
+    //     }
+    //
+    //     //Vector3 newDir = new Vector3(returnDir.x, returnDir.y, returnDir.z);
+    //
+    //     return returnDir - (Vector3.forward);
+    // }
+    
+    // private Vector3 MoveToRandomWP()
     // {
     //     Ray ray = new Ray();
     //     RaycastHit hit;
     //     ray.origin = transform.position;
+    //     float distanceToObstacle = 0;
     //     float castingDistance = 20;
-    //     ray.direction = transform.forward;
-    //     for (int i = 0; i < rayAmount; i++)
+    //     do
     //     {
-    //         ray.direction += transform.right * 60;
-    //         Physics.Raycast(ray.origin, ray.direction, out hit, castingDistance);
+    //         float randomDirectionX = Random.Range(-1, 1);
+    //         float randomDirectionZ = Random.Range(-1, 1);
+    //         ray.direction = transform.forward * randomDirectionZ + transform.right * randomDirectionX;
+    //         if (Physics.Raycast(ray.origin, ray.direction, out hit, castingDistance))
+    //         {
+    //             distanceToObstacle = hit.distance;
+    //         }
+    //         else distanceToObstacle = castingDistance;
     //         
     //         Debug.DrawRay(ray.origin, ray.direction, Color.red);
-    //     }
+    //         
+    //         //Debug.Log(ray.origin + ray.direction * (distanceToObstacle - 1));
+    //         return ray.origin + ray.direction * (distanceToObstacle - 1);
+    //         
+    //     } while (distanceToObstacle < 1.0f);
     // }
-    //
-    // private void Update()
-    // {
-    //     FindNewWP();
-    // }
+
+
 }
