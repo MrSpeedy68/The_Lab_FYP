@@ -162,7 +162,7 @@ public class SpiderController : MonoBehaviour
         }
         else _anim.SetBool("canHearPlayer",false);
     }
-    
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;

@@ -46,4 +46,13 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject,30f);
         }
     }
+    
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            var player = other.gameObject.GetComponent<Player>();
+            player.TakeDamage(attackDamage);
+        }
+    }
 }
