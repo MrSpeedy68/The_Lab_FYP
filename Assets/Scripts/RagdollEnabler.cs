@@ -54,7 +54,7 @@ public class RagdollEnabler : MonoBehaviour
         else EnableRagdoll();
     }
 
-    private void DisableRagdoll()
+    public void DisableRagdoll()
     {
         foreach(Rigidbody rb in rigRigidbodies)
         {
@@ -62,7 +62,7 @@ public class RagdollEnabler : MonoBehaviour
         }
     }
     
-    private void EnableRagdoll()
+    public void EnableRagdoll()
     {
         foreach(Rigidbody rb in rigRigidbodies)
         {
