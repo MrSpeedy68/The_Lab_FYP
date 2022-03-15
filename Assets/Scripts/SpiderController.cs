@@ -16,6 +16,12 @@ public class SpiderController : MonoBehaviour
     private Animator _anim;
     private AnimatorStateInfo _animationState;
     private Vector3 _randTarget;
+    [SerializeField] private GameObject _player;
+    
+    
+    [Header("Detection Settings")]
+    public float hearingDistance = 10f;
+    public float sightDistance = 30f;
 
     void Start()
     {
@@ -28,9 +34,12 @@ public class SpiderController : MonoBehaviour
 
     void FixedUpdate()
     {
-        //var pp = MoveToRandomWP();
-        
         _animationState = _anim.GetCurrentAnimatorStateInfo(0);
+        
+        Sight();
+        Listen();
+        
+        
 
         if (_animationState.IsName("Patrolling"))
         {
@@ -38,8 +47,6 @@ public class SpiderController : MonoBehaviour
              {
                  _randTarget = MoveToRandomWP();
              }
-            
-            
              //float targetDir = Vector3.Angle(_randTarget, transform.forward);
              //Debug.Log(targetDir);
             
@@ -47,6 +54,15 @@ public class SpiderController : MonoBehaviour
              //_rigidbody.MoveRotation(lookAtLoc);
              
              
+            Debug.DrawLine(transform.position,_randTarget,Color.cyan);
+
+            transform.position = Vector3.MoveTowards(transform.position, _randTarget, speed * Time.deltaTime);
+        }
+
+        if (_animationState.IsName("FollowPlayer"))
+        {
+            _randTarget = _player.transform.position;
+
             Debug.DrawLine(transform.position,_randTarget,Color.cyan);
 
             transform.position = Vector3.MoveTowards(transform.position, _randTarget, speed * Time.deltaTime);
@@ -112,6 +128,46 @@ public class SpiderController : MonoBehaviour
         return returnedVector;
     }
     
+    private void Sight()
+    {
+        Ray ray = new Ray();
+        RaycastHit hit;
+        ray.origin = transform.position + Vector3.up;
+        string objectInSight;
+
+        ray.direction = transform.forward * sightDistance;
+        Debug.DrawRay(ray.origin, ray.direction * sightDistance, Color.red);
+
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, sightDistance))
+        {
+            objectInSight = hit.collider.gameObject.name;
+            if (objectInSight == "XR Rig")
+            {
+                _anim.SetBool("canSeePlayer",true);
+            }
+            else
+            {
+                _anim.SetBool("canSeePlayer",false);
+            }
+        }
+        else _anim.SetBool("canSeePlayer",false);
+    }
+
+    private void Listen()
+    {
+        float distance = Vector3.Distance(transform.position, _player.transform.position);
+        if (distance <= hearingDistance)
+        {
+            _anim.SetBool("canHearPlayer",true);
+        }
+        else _anim.SetBool("canHearPlayer",false);
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position,hearingDistance/2);
+    }
     
     // private Vector3 MoveToRandomWP()
     // {
