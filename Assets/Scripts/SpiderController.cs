@@ -112,7 +112,7 @@ public class SpiderController : MonoBehaviour
             
             if (Physics.Raycast (ray, out hit)) {
 
-                Debug.Log(i + " " + hit.distance);
+                //Debug.Log(i + " " + hit.distance);
                 
                 if (hit.distance > 1.5f)
                 {
@@ -122,7 +122,7 @@ public class SpiderController : MonoBehaviour
             }
         }
         
-        Debug.Log(returnDir.Count);
+        //Debug.Log(returnDir.Count);
 
         Vector3 returnedVector = returnDir[Random.Range(0,returnDir.Count)];
         return returnedVector;

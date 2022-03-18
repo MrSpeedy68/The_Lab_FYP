@@ -16,12 +16,21 @@ public class MagazineComponent : MonoBehaviour
     {
         currentAmmoCount = _maxAmmo;
 
-        _ammoText.text = currentAmmoCount + "/" + _maxAmmo;
+        if (_ammoText) _ammoText.text = currentAmmoCount + "/" + _maxAmmo;
     }
 
     public void RemoveBullet()
     {
         currentAmmoCount--;
-        _ammoText.text = currentAmmoCount + "/" + _maxAmmo;
+        if (_ammoText) _ammoText.text = currentAmmoCount + "/" + _maxAmmo;
+    }
+    
+    public void AddBullet()
+    {
+        if (currentAmmoCount < _maxAmmo)
+        {
+            currentAmmoCount++;
+            if (_ammoText) _ammoText.text = currentAmmoCount + "/" + _maxAmmo;
+        }
     }
 }

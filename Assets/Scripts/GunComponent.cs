@@ -3,22 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GunComponent : MonoBehaviour
 {
+    [Header("Weapon Attributes")]
+    [Tooltip("If weapon isAutomatic then this will determine the amount of rounds fired per second else it will be how many bullets are spread")]
     [SerializeField] private float fireRate = 12f; // How many rounds fired per second average fire rate = 700/min
     [SerializeField] private float bulletForce = 100f;
+    [SerializeField] private float bulletDamage;
+    [SerializeField] private bool isAutomatic;
+    [SerializeField] private bool isSpreadFire;
+    [SerializeField] private float spreadAmount;
+    [Tooltip("If you want to use a Magazine Component then this will be false otherwise specify how large the magazine storage is")]
+    [SerializeField] private bool hasInternalStorage;
+    
+    [Header("Transforms And Additional Objects")]
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private Transform ejectTransform;
     [SerializeField] private GameObject magazineSocket;
     [SerializeField] private GameObject casing;
     
+    [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip gunFireAudio;
     [SerializeField] private AudioClip gunEmptyAudio;
     [SerializeField] private AudioClip gunMagInAudio;
     [SerializeField] private AudioClip gunMagOutAudio;
 
+    [Header("FX")]
     [SerializeField] private TrailRenderer bulletTrail;
     [SerializeField] private ParticleSystem shootParticleSystem;
     [SerializeField] private ParticleSystem impactParticleSystem;
@@ -28,7 +41,7 @@ public class GunComponent : MonoBehaviour
     private bool _isActive = false;
     private float _timeBeforeShooting;
     
-    public void Fire()
+    private void Fire()
     {
         _magazineComponent = magazineSocket.GetComponentInChildren<MagazineComponent>();
         if (_magazineComponent != null && _magazineComponent.currentAmmoCount > 0)
@@ -51,6 +64,41 @@ public class GunComponent : MonoBehaviour
         }
         else audioSource.PlayOneShot(gunEmptyAudio);
     }
+
+    private void SpreadFire()
+    {
+        //_magazineComponent = magazineSocket.GetComponentInChildren<MagazineComponent>();
+        if (_magazineComponent != null && _magazineComponent.currentAmmoCount > 0)
+        {
+            audioSource.volume = 50f;
+            audioSource.PlayOneShot(gunFireAudio);
+            _magazineComponent.RemoveBullet();
+
+            shootParticleSystem.Play();
+            EjectCasing();
+
+            for (int i = 0; i < fireRate; i++)
+            {
+                float randomDirectionX = Random.Range(-spreadAmount, spreadAmount);
+                float randomDirectionZ = Random.Range(-spreadAmount, spreadAmount);
+                var direction = bulletSpawnPoint.forward + bulletSpawnPoint.up * randomDirectionZ + bulletSpawnPoint.right * randomDirectionX;
+                
+                if (Physics.Raycast(bulletSpawnPoint.position, direction, out RaycastHit hit, float.MaxValue, _mask))
+                {
+                    TrailRenderer trail = Instantiate(bulletTrail, bulletSpawnPoint.position, Quaternion.identity);
+                    
+                    Debug.DrawRay(bulletSpawnPoint.position, direction,Color.red,5f);
+
+                    StartCoroutine(SpawnTrail(trail, hit));
+                    CheckHit(hit);
+                }
+            }
+            
+        }
+        else audioSource.PlayOneShot(gunEmptyAudio);
+    }
+    
+    
 
     IEnumerator SpawnTrail(TrailRenderer Trail, RaycastHit Hit)
     {
@@ -78,7 +126,7 @@ public class GunComponent : MonoBehaviour
         {
             Debug.Log("Enemy Detected");
             RagdollEnabler ragdollEnabler = hit.collider.gameObject.GetComponent<RagdollEnabler>();
-            ragdollEnabler.TakeDamage(10f);
+            ragdollEnabler.TakeDamage(bulletDamage);
         }
 
 
@@ -97,22 +145,31 @@ public class GunComponent : MonoBehaviour
     
     private void Start()
     {
-        _timeBeforeShooting = 1 / fireRate;
+        _timeBeforeShooting = 0f;//_timeBeforeShooting = 1 / fireRate;
+
+        if (hasInternalStorage)
+        {
+            _magazineComponent = GetComponent<MagazineComponent>();
+        }
     }
 
     private void Update()
     {
         if (_isActive)
         {
-            if (_timeBeforeShooting <= 0f)
+            if (_timeBeforeShooting <= 0f && isAutomatic && !isSpreadFire)
             {
                 Fire();
                 _timeBeforeShooting = 1 / fireRate;
+               
             }
-            else
+            else if (_timeBeforeShooting <= 0f && !isAutomatic && isSpreadFire)
             {
-                _timeBeforeShooting -= Time.deltaTime;
+                SpreadFire();
+                _timeBeforeShooting = 1 / fireRate;
             }
+            
+            if (isAutomatic) _timeBeforeShooting -= Time.deltaTime;
         }
     }
 
@@ -127,6 +184,8 @@ public class GunComponent : MonoBehaviour
     public void WeaponState()
     {
         _isActive = !_isActive;
+
+        if (!isAutomatic) _timeBeforeShooting = 0f;
     }
 
     public void ReleaseWeapon()
