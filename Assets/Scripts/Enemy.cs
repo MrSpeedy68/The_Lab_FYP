@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float health;
     public float attackDamage;
+    
+    private HealthBar _healthBar;
+    private float _maxHealth;
 
     private enum EnemyType
     {
@@ -17,9 +20,21 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private EnemyType enemyType;
 
+    private void Start()
+    {
+        _maxHealth = health;
+        
+        if (enemyType == EnemyType.HUMANOID)
+        {
+            _healthBar = GetComponentInChildren<HealthBar>();
+        }
+    }
+
     public void TakeDamage(float damageAmount)
     {
         health -= damageAmount;
+        
+        if (_healthBar) _healthBar.UpdateHealth(health / _maxHealth);
 
         if (health <= 0f)
         {
@@ -55,4 +70,29 @@ public class Enemy : MonoBehaviour
             player.TakeDamage(attackDamage);
         }
     }
+
+    public void ApplyForcesFromGun()
+    {
+        
+    }
+    
+    
+    public void ApplyForcesFromMelee(float relativeVelocity, float mass, Vector3 hitPoint)
+    {
+        if (relativeVelocity > 1f)
+        {
+            if (health <= 0f)
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+                var ragdoll = GetComponent<RagdollEnabler>();
+                ragdoll.EnableRagdoll();
+                
+                Vector3 hitVector = (hitPoint - transform.position).normalized;
+
+                ragdoll.ApplyRagdollForce(hitVector, mass);
+            }
+        }
+    }
+    
+    
 }

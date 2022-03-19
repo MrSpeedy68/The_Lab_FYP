@@ -25,11 +25,11 @@ public class MagazineComponent : MonoBehaviour
         if (_ammoText) _ammoText.text = currentAmmoCount + "/" + _maxAmmo;
     }
     
-    public void AddBullet()
+    public void AddBullet(int amount)
     {
         if (currentAmmoCount < _maxAmmo)
         {
-            currentAmmoCount++;
+            currentAmmoCount += amount;
             if (_ammoText) _ammoText.text = currentAmmoCount + "/" + _maxAmmo;
         }
     }

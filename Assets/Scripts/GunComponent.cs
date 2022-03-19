@@ -113,10 +113,7 @@ public class GunComponent : MonoBehaviour
             yield return null;
         }
         Trail.transform.position = Hit.point;
-        
-        var impactPointParticle = Instantiate(impactParticleSystem, Hit.point, Quaternion.LookRotation(Hit.normal));
-        impactPointParticle.transform.parent = Hit.transform; //Setting the impact particle as parent of the impact incase it has a rigitbody and moves so the hit moves with the moved rb.
-        
+
         Destroy(Trail.gameObject, Trail.time);
     }
 
@@ -125,22 +122,36 @@ public class GunComponent : MonoBehaviour
         if (hit.collider.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Enemy Detected");
-            RagdollEnabler ragdollEnabler = hit.collider.gameObject.GetComponent<RagdollEnabler>();
-            ragdollEnabler.TakeDamage(bulletDamage);
+            var enemy = hit.collider.gameObject.GetComponent<Enemy>();
+            enemy.TakeDamage(bulletDamage);
+            
+            var ragdoll = hit.collider.gameObject.GetComponent<RagdollEnabler>();
+            ragdoll.ApplyRagdollForce(hit.normal,1f);
         }
-
-
-        if (hit.rigidbody)
+        
+        else if (hit.rigidbody && !hit.collider.gameObject.CompareTag("Enemy"))
         {
             hit.rigidbody.AddForce(hit.point.normalized * bulletForce);
+            SpawnImpactDecal(hit);
         }
 
-        if (hit.collider.gameObject.CompareTag("Target"))
+        else if (hit.collider.gameObject.CompareTag("Target"))
         {
             Debug.Log("Hit Target Obj");
             hit.transform.SendMessage("HitByRay");
+            SpawnImpactDecal(hit);
+        }
+        else
+        {
+            SpawnImpactDecal(hit);
         }
 
+    }
+
+    private void SpawnImpactDecal(RaycastHit hit)
+    {
+        var impactPointParticle = Instantiate(impactParticleSystem, hit.point, Quaternion.LookRotation(hit.normal));
+        impactPointParticle.transform.parent = hit.transform; //Setting the impact particle as parent of the impact incase it has a rigitbody and moves so the hit moves with the moved rb.
     }
     
     private void Start()
@@ -170,6 +181,17 @@ public class GunComponent : MonoBehaviour
             }
             
             if (isAutomatic) _timeBeforeShooting -= Time.deltaTime;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.name);
+        if (other.gameObject.CompareTag("Magazine") && hasInternalStorage)
+        {
+            Debug.Log("Entered Trigger");
+            _magazineComponent.AddBullet(1);
+            Destroy(other.gameObject);
         }
     }
 

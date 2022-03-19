@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 1440820140099111736}
   m_Layer: 9
   m_Name: M4A1 Rifle
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -759,6 +759,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 11
   bulletForce: 100
+  bulletDamage: 0
+  isAutomatic: 1
+  isSpreadFire: 0
+  spreadAmount: 0
+  hasInternalStorage: 0
   bulletSpawnPoint: {fileID: 1440820140189393457}
   ejectTransform: {fileID: 58614082}
   magazineSocket: {fileID: 1440820139989892990}
@@ -773,7 +778,7 @@ MonoBehaviour:
   impactParticleSystem: {fileID: 4052428646073646566, guid: 0d581bcbe0138044a91cc208010bc5e1, type: 3}
   _mask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 65537
 --- !u!82 &1440820140099111736
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4761,6 +4766,14 @@ PrefabInstance:
     - target: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: m_Name
       value: MuzzleFlash01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_Layer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992675705445476, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_Layer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: m_RootOrder
