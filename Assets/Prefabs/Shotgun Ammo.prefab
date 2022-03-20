@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6333205549916244688}
   - component: {fileID: 6333205549916244689}
   - component: {fileID: 1964592491324266802}
+  - component: {fileID: 467731654331110246}
   m_Layer: 6
   m_Name: Shotgun Ammo
   m_TagString: Magazine
@@ -231,3 +232,18 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &467731654331110246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002979001225744738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11183a65e3e11264ab0ebb8e25a90714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAmmoCount: 0
+  _ammoText: {fileID: 0}
+  _maxAmmo: 1

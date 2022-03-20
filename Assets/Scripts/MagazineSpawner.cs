@@ -61,19 +61,27 @@ public class MagazineSpawner : MonoBehaviour
         {
             magType = MagazineType.PISTOL;
         }
-        else magType = MagazineType.RIFLE;
+        else if (objName == "Rifle")
+        {
+            magType = MagazineType.RIFLE;
+        }
     }
 
     public void SpawnMag()
     {
         magSpawn = grabScript.interactorsSelecting[0].transform.position;
-
         int val = (int)magType;
 
-        Instantiate(magazineObj[val], magSpawn, Quaternion.identity);
-
-        StopAllCoroutines();
-        StartCoroutine(ReleaseSpawner());
+        if (_player.IsAmmoAvailable(val))
+        {
+            var newMag = Instantiate(magazineObj[val], magSpawn, Quaternion.identity);
+            var magComp = newMag.GetComponent<MagazineComponent>();
+        
+            magComp.currentAmmoCount = _player.RemoveAmmo(val, magComp._maxAmmo);
+        
+            StopAllCoroutines();
+            StartCoroutine(ReleaseSpawner());
+        }
     }
 
     IEnumerator ReleaseSpawner()

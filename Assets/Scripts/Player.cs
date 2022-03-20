@@ -39,6 +39,25 @@ public class Player : MonoBehaviour
         }
     }
 
+    public bool IsAmmoAvailable(int type)
+    {
+        bool isAmmo = false;
+        switch (type)
+        {
+            case 0:
+                isAmmo = rifleAmmo > 0;
+                break;
+            case 1:
+                isAmmo = pistolAmmo > 0;
+                break;
+            case 2:
+                isAmmo = shotgunAmmo > 0;
+                break;
+        }
+
+        return isAmmo;
+    }
+
     public int RemoveAmmo(int type, int magAmount)
     {
         int returnAmount = 0;
