@@ -186,10 +186,10 @@ public class GunComponent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
+        //Debug.Log(other.name);
         if (other.gameObject.CompareTag("Magazine") && hasInternalStorage)
         {
-            Debug.Log("Entered Trigger");
+            //Debug.Log("Entered Trigger");
             _magazineComponent.AddBullet(1);
             Destroy(other.gameObject);
         }
