@@ -2696,6 +2696,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   respawnLoc: {x: 0, y: 0, z: 0}
+  rifleAmmo: 0
+  pistolAmmo: 0
+  shotgunAmmo: 0
 --- !u!1 &2710129955817253765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2983,7 +2986,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a415732a6f285c44ad3ecb50ca17fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magazineObj: {fileID: 8419324794162387441, guid: 9716c3e644fc1414c80ab88845d6e27c, type: 3}
+  magazineObj:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  hands: []
+  magType: 0
 --- !u!54 &4075448243572919182
 Rigidbody:
   m_ObjectHideFlags: 0

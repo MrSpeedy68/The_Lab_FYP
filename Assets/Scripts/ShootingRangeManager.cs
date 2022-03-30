@@ -36,6 +36,7 @@ public class ShootingRangeManager : MonoBehaviour
                         var animator = t1.GetComponentInParent<Animator>();
                         animator.SetTrigger("ReturnTarget");
                         t1.isHit = false;
+                        animator.SetBool("TargetHit", false);
                     }
                 }
             }

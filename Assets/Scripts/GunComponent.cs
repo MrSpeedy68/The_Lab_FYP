@@ -174,6 +174,11 @@ public class GunComponent : MonoBehaviour
                 _timeBeforeShooting = 1 / fireRate;
                
             }
+            else if (_timeBeforeShooting <= 0f && !isAutomatic && !isSpreadFire)
+            {
+                Fire();
+                _timeBeforeShooting = 1 / fireRate;
+            }
             else if (_timeBeforeShooting <= 0f && !isAutomatic && isSpreadFire)
             {
                 SpreadFire();

@@ -600,7 +600,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6581077160225442172}
+        m_TargetAssemblyTypeName: GunComponent, Assembly-CSharp
+        m_MethodName: ReleaseWeapon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls:
@@ -618,7 +630,19 @@ MonoBehaviour:
         m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6581077160225442172}
+        m_TargetAssemblyTypeName: GunComponent, Assembly-CSharp
+        m_MethodName: WeaponState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -806,7 +830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 12
   bulletForce: 100
-  bulletDamage: 15
+  bulletDamage: 25
   isAutomatic: 0
   isSpreadFire: 0
   spreadAmount: 0
