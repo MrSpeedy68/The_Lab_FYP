@@ -82,14 +82,14 @@ public class SpiderController : MonoBehaviour
         float distanceToObstacle = 0;
         List<Vector3> returnDir = new List<Vector3>();
         Ray returnedRay = new Ray();
-        Random.InitState(Mathf.CeilToInt(Time.time));
+        //Random.InitState(Mathf.CeilToInt(Time.time));
         
         for (int i=0; i<4; i++)
         {
             
             RaycastHit hit;
             Ray ray = new Ray();
-
+    
             switch (i)
             {
                 case 0:
@@ -111,7 +111,7 @@ public class SpiderController : MonoBehaviour
             Debug.DrawRay(ray.origin,ray.direction,Color.red,30f);
             
             if (Physics.Raycast (ray, out hit)) {
-
+    
                 //Debug.Log(i + " " + hit.distance);
                 
                 if (hit.distance > 1.5f)
@@ -123,7 +123,7 @@ public class SpiderController : MonoBehaviour
         }
         
         //Debug.Log(returnDir.Count);
-
+    
         Vector3 returnedVector = returnDir[Random.Range(0,returnDir.Count)];
         return returnedVector;
     }
@@ -233,7 +233,7 @@ public class SpiderController : MonoBehaviour
     //             if (hit.distance > distanceToObstacle)
     //             {
     //                 distanceToObstacle = hit.distance;
-    //                 returnDir = hit.direction;
+    //                 returnDir = dir;
     //             }
     //         }
     //     }
@@ -268,6 +268,6 @@ public class SpiderController : MonoBehaviour
     //         
     //     } while (distanceToObstacle < 1.0f);
     // }
-
+    //
 
 }

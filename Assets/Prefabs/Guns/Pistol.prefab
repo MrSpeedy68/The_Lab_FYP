@@ -384,7 +384,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 32768
   m_InteractionLayers:
-    m_Bits: 32768
+    m_Bits: 65536
   m_AttachTransform: {fileID: 6581077160011642940}
   m_KeepSelectedTargetValid: 1
   m_StartingSelectedInteractable: {fileID: 0}
@@ -604,9 +604,9 @@ MonoBehaviour:
   m_Activated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GunFire, Assembly-CSharp
-        m_MethodName: Fire
+      - m_Target: {fileID: 6581077160225442172}
+        m_TargetAssemblyTypeName: GunComponent, Assembly-CSharp
+        m_MethodName: WeaponState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
