@@ -616,7 +616,7 @@ MonoBehaviour:
   stepSize: 0.2
   smoothness: 10
   stepHeight: 0.2
-  bodyOrientation: 0
+  bodyOrientation: 1
 --- !u!114 &2096398290
 MonoBehaviour:
   m_ObjectHideFlags: 0

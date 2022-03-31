@@ -858,7 +858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 11
   bulletForce: 100
-  bulletDamage: 5
+  bulletDamage: 10
   isAutomatic: 1
   isSpreadFire: 0
   spreadAmount: 0
@@ -877,7 +877,7 @@ MonoBehaviour:
   impactParticleSystem: {fileID: 4052428646073646566, guid: 0d581bcbe0138044a91cc208010bc5e1, type: 3}
   _mask:
     serializedVersion: 2
-    m_Bits: 65537
+    m_Bits: 2147483647
 --- !u!82 &1440820140099111736
 AudioSource:
   m_ObjectHideFlags: 0

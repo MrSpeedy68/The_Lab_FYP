@@ -411,7 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 12
   bulletForce: 100
-  bulletDamage: 5
+  bulletDamage: 10
   isAutomatic: 0
   isSpreadFire: 1
   spreadAmount: 0.1

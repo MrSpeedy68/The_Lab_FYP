@@ -116,7 +116,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4294967295
+    m_Bits: 1
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_StartingSelectedInteractable: {fileID: 0}
@@ -280,7 +280,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4294967295
+    m_Bits: 1
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_StartingSelectedInteractable: {fileID: 0}
@@ -2412,8 +2412,8 @@ GameObject:
   - component: {fileID: 2710129955408895208}
   - component: {fileID: 2710129954195540090}
   - component: {fileID: 297008190}
-  - component: {fileID: 1350011904619340258}
   - component: {fileID: 1878997568}
+  - component: {fileID: 297008201}
   m_Layer: 8
   m_Name: XR Rig
   m_TagString: Player
@@ -2670,18 +2670,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1350011904619340258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2710129955408895201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff33ad5209b3cfd4aa0be6c79a1f6b97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1878997568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2696,9 +2684,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   respawnLoc: {x: 0, y: 0, z: 0}
-  rifleAmmo: 0
-  pistolAmmo: 0
-  shotgunAmmo: 0
+  rifleAmmo: 20
+  pistolAmmo: 20
+  shotgunAmmo: 20
+--- !u!114 &297008201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2710129955408895201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff33ad5209b3cfd4aa0be6c79a1f6b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2710129955817253765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,9 +2987,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magazineObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8419324794162387441, guid: 9716c3e644fc1414c80ab88845d6e27c, type: 3}
+  - {fileID: 137652038258309114, guid: 29e2aaf4aa23e1347a3cae125cab0568, type: 3}
+  - {fileID: 4002979001225744738, guid: 272db9fb6243e6949b08b653d6400682, type: 3}
   hands: []
   magType: 0
 --- !u!54 &4075448243572919182
