@@ -9,6 +9,7 @@ public class ContinuousMovement : MonoBehaviour
 {
     public float speed = 1f;
     public XRNode inputSource;
+    public GameObject inputController;
     public float gravity = -9.81f;
     public LayerMask groundLayer;
     public float additionalHeight = 0.2f;
@@ -35,8 +36,9 @@ public class ContinuousMovement : MonoBehaviour
     private void FixedUpdate()
     {
         CapsuleFollowHeadset();
-        Quaternion headYaw = Quaternion.Euler(0, rig.Camera.transform.eulerAngles.y, 0); //Get the rotation of the head
-        Vector3 direction = headYaw * new Vector3(inputAxis.x, 0, inputAxis.y); //always move towards the direction of the head
+        //Quaternion headYaw = Quaternion.Euler(0, rig.Camera.transform.eulerAngles.y, 0); //Get the rotation of the head
+        Quaternion controllerYaw = Quaternion.Euler(0, inputController.transform.eulerAngles.y, 0);
+        Vector3 direction = controllerYaw * new Vector3(inputAxis.x, 0, inputAxis.y); //always move towards the direction of the head
 
         _character.Move(direction * Time.fixedDeltaTime * speed);
 
