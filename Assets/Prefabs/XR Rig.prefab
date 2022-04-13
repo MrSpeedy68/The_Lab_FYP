@@ -2263,7 +2263,7 @@ Camera:
   m_GameObject: {fileID: 2710129955255000845}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -2498,6 +2498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   inputSource: 5
+  inputController: {fileID: 2710129955817253765}
   gravity: -9.81
   groundLayer:
     serializedVersion: 2
@@ -2543,7 +2544,7 @@ MonoBehaviour:
   m_EnableTurnAround: 0
   m_TurnUsage: 0
   m_Controllers:
-  - {fileID: 2710129955817253760}
+  - {fileID: 2710129954758709122}
   m_DeadZone: 0.75
 --- !u!114 &2710129955408895208
 MonoBehaviour:
@@ -2684,9 +2685,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   respawnLoc: {x: 0, y: 0, z: 0}
-  rifleAmmo: 20
-  pistolAmmo: 20
-  shotgunAmmo: 20
+  rifleAmmo: 100
+  pistolAmmo: 54
+  shotgunAmmo: 5
 --- !u!114 &297008201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2990,7 +2991,9 @@ MonoBehaviour:
   - {fileID: 8419324794162387441, guid: 9716c3e644fc1414c80ab88845d6e27c, type: 3}
   - {fileID: 137652038258309114, guid: 29e2aaf4aa23e1347a3cae125cab0568, type: 3}
   - {fileID: 4002979001225744738, guid: 272db9fb6243e6949b08b653d6400682, type: 3}
-  hands: []
+  hands:
+  - {fileID: 2710129955817253762}
+  - {fileID: 2710129954758709124}
   magType: 0
 --- !u!54 &4075448243572919182
 Rigidbody:
