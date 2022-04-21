@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 
 public class PauseMenuManager : MonoBehaviour
@@ -12,6 +13,8 @@ public class PauseMenuManager : MonoBehaviour
     public GameObject pauseMenuUI;
 
     private bool isMenuPressed;
+    private bool isAllowedToPress = true;
+    private float interval = 0.25f;
 
     // Update is called once per frame
     void Update()
@@ -19,10 +22,12 @@ public class PauseMenuManager : MonoBehaviour
         InputDevice device = InputDevices.GetDeviceAtXRNode(inputSource);
         device.TryGetFeatureValue(CommonUsages.menuButton, out isMenuPressed); //Get controller and the output joystick values
 
-        Debug.Log(isMenuPressed);
-        
-        if (isMenuPressed)
+        Debug.Log(isAllowedToPress);
+
+        if (isMenuPressed && isAllowedToPress)
         {
+            StartCoroutine(TimeDelayOnClick());
+            
             if (GameIsPaused)
             {
                 Resume();
@@ -34,8 +39,25 @@ public class PauseMenuManager : MonoBehaviour
         }
     }
 
+    IEnumerator TimeDelayOnClick()
+    {
+        isAllowedToPress = false;
+        yield return new WaitForSecondsRealtime(interval);
+        isAllowedToPress = true;
+        yield return null;
+    }
 
-    void Resume()
+    public void OptionsMenu()
+    {
+        
+    }
+
+    public void QuitMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void Resume()
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
