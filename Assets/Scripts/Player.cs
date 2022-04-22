@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float health = 100f;
     [SerializeField] private Vector3 respawnLoc;
 
     private MagazineSpawner _magazineSpawner;
-
-    public int rifleAmmo;
-    public int pistolAmmo;
-    public int shotgunAmmo;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,16 +20,16 @@ public class Player : MonoBehaviour
         switch (type)
         {
             case 0:
-                rifleAmmo += amount;
+                PlayerData.rifleAmmo += amount;
                 break;
             case 1:
-                pistolAmmo += amount;
+                PlayerData.pistolAmmo += amount;
                 break;
             case 2:
-                shotgunAmmo += amount;
+                PlayerData.shotgunAmmo += amount;
                 break;
             default:
-                rifleAmmo += amount;
+                PlayerData.rifleAmmo += amount;
                 break;
         }
     }
@@ -45,13 +40,13 @@ public class Player : MonoBehaviour
         switch (type)
         {
             case 0:
-                isAmmo = rifleAmmo > 0;
+                isAmmo = PlayerData.rifleAmmo > 0;
                 break;
             case 1:
-                isAmmo = pistolAmmo > 0;
+                isAmmo = PlayerData.pistolAmmo > 0;
                 break;
             case 2:
-                isAmmo = shotgunAmmo > 0;
+                isAmmo = PlayerData.shotgunAmmo > 0;
                 break;
         }
 
@@ -64,45 +59,45 @@ public class Player : MonoBehaviour
         switch (type)
         {
             case 0:
-                if (rifleAmmo >= magAmount)
+                if (PlayerData.rifleAmmo >= magAmount)
                 {
-                    rifleAmmo -= magAmount;
+                    PlayerData.rifleAmmo -= magAmount;
                     returnAmount = magAmount;
                 }
                 else
                 {
-                    returnAmount = rifleAmmo;
-                    rifleAmmo -= rifleAmmo;
+                    returnAmount = PlayerData.rifleAmmo;
+                    PlayerData.rifleAmmo -= PlayerData.rifleAmmo;
                 }
                 break;
             
             case 1:
-                if (pistolAmmo >= magAmount)
+                if (PlayerData.pistolAmmo >= magAmount)
                 {
-                    pistolAmmo -= magAmount;
+                    PlayerData.pistolAmmo -= magAmount;
                     returnAmount = magAmount;
                 }
                 else
                 {
-                    returnAmount = pistolAmmo;
-                    pistolAmmo -= pistolAmmo;
+                    returnAmount = PlayerData.pistolAmmo;
+                    PlayerData.pistolAmmo -= PlayerData.pistolAmmo;
                 }
                 break;
             
             case 2:
-                if (shotgunAmmo >= magAmount)
+                if (PlayerData.shotgunAmmo >= magAmount)
                 {
-                    shotgunAmmo -= magAmount;
+                    PlayerData.shotgunAmmo -= magAmount;
                     returnAmount = magAmount;
                 }
                 else
                 {
-                    returnAmount = shotgunAmmo;
-                    shotgunAmmo -= shotgunAmmo;
+                    returnAmount = PlayerData.shotgunAmmo;
+                    PlayerData.shotgunAmmo -= PlayerData.shotgunAmmo;
                 }
                 break;
             default:
-                rifleAmmo -= magAmount;
+                PlayerData.rifleAmmo -= magAmount;
                 break;
         }
 
@@ -111,9 +106,9 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        health -= damageAmount;
+        PlayerData.health -= damageAmount;
 
-        if (health <= 0f)
+        if (PlayerData.health <= 0f)
         {
             Die();
         }
@@ -126,7 +121,7 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        health = 100f;
+        PlayerData.health = 100f;
         transform.position = respawnLoc;
     }
 }

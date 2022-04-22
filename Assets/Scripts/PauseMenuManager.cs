@@ -23,8 +23,8 @@ public class PauseMenuManager : MonoBehaviour
 
     private void Start()
     {
-        pauseMenuUI.SetActive(false);
-        optionsMenuUI.SetActive(false);
+        if (pauseMenuUI) pauseMenuUI.SetActive(false);
+        if (optionsMenuUI) optionsMenuUI.SetActive(false);
 
         movementToggle.isOn = PlayerData.isTeleport; 
 
@@ -35,22 +35,25 @@ public class PauseMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InputDevice device = InputDevices.GetDeviceAtXRNode(inputSource);
-        device.TryGetFeatureValue(CommonUsages.menuButton, out isMenuPressed); //Get controller and the output joystick values
-
-        //Debug.Log(isAllowedToPress);
-
-        if (isMenuPressed && isAllowedToPress)
+        if (pauseMenuUI && optionsMenuUI)
         {
-            StartCoroutine(TimeDelayOnClick());
+            InputDevice device = InputDevices.GetDeviceAtXRNode(inputSource);
+            device.TryGetFeatureValue(CommonUsages.menuButton, out isMenuPressed); //Get controller and the output joystick values
+
+            //Debug.Log(isAllowedToPress);
+
+            if (isMenuPressed && isAllowedToPress)
+            {
+                StartCoroutine(TimeDelayOnClick());
             
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
+                if (GameIsPaused)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Pause();
+                }
             }
         }
     }
@@ -78,20 +81,7 @@ public class PauseMenuManager : MonoBehaviour
     public void SaveGame()
     {
         //Save Game
-        var playerObj = GameObject.FindGameObjectWithTag("Player");
-        Player _player = playerObj.GetComponent<Player>();
-
-        if (_player)
-        {
-            PlayerData.pistolAmmo = _player.pistolAmmo;
-            PlayerData.shotgunAmmo = _player.shotgunAmmo;
-            PlayerData.rifleAmmo = _player.rifleAmmo;
-
-            PlayerData.playerPos = playerObj.gameObject.transform.position;
-            PlayerData.health = _player.health;
-            
-            SaveData();
-        }
+        SaveData();
     }
 
     private void SaveData()
@@ -101,9 +91,11 @@ public class PauseMenuManager : MonoBehaviour
         PlayerPrefs.SetInt("rifleAmmo", PlayerData.rifleAmmo);
         PlayerPrefs.SetFloat("health", PlayerData.health);
         
-        PlayerPrefs.SetFloat("XPos", PlayerData.playerPos.x);
-        PlayerPrefs.SetFloat("YPos", PlayerData.playerPos.y);
-        PlayerPrefs.SetFloat("ZPos", PlayerData.playerPos.z);
+        var playerObj = GameObject.FindGameObjectWithTag("Player");
+        
+        PlayerPrefs.SetFloat("XPos", playerObj.transform.position.x);
+        PlayerPrefs.SetFloat("YPos", playerObj.transform.position.y);
+        PlayerPrefs.SetFloat("ZPos", playerObj.transform.position.z);
     }
 
     public void SwitchMovementType()
