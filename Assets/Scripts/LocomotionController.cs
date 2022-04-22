@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,13 @@ public class LocomotionController : MonoBehaviour
     public XRRayInteractor rightInteractorRay;
 
     public bool EnableRightTeleport { get; set; } = true;
-    public bool EnableLeftTeleport { get; set; } = true;
+    public bool EnableLeftTeleport { get; set; } = false;
+
+
+    private void Start()
+    {
+        SwitchMovementType(PlayerData.isTeleport);
+    }
 
     // Update is called once per frame
     void Update()
@@ -37,6 +44,12 @@ public class LocomotionController : MonoBehaviour
             bool isRightInteractorRayHovering = rightInteractorRay.TryGetHitInfo(out pos, out norm, out index, out validTarget);
             rightTeleportRay.gameObject.SetActive(EnableRightTeleport && CheckIfActivated(rightTeleportRay) && !isRightInteractorRayHovering);
         }
+    }
+
+    public void SwitchMovementType(bool state)
+    {
+        //enableRight = state;
+        EnableRightTeleport = state;
     }
 
     public bool CheckIfActivated(XRController controller)

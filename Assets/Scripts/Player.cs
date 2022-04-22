@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float health = 100f;
+    public float health = 100f;
     [SerializeField] private Vector3 respawnLoc;
 
     private MagazineSpawner _magazineSpawner;

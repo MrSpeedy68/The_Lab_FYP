@@ -3220,6 +3220,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7248916013068250039, guid: e86167924e68a184a89b1e94f64d9909, type: 3}
+      propertyPath: audioSlider
+      value: 
+      objectReference: {fileID: 1751695753565788781}
+    - target: {fileID: 7248916013068250039, guid: e86167924e68a184a89b1e94f64d9909, type: 3}
+      propertyPath: movementToggle
+      value: 
+      objectReference: {fileID: 1190176238066591644}
+    - target: {fileID: 7248916013068250041, guid: e86167924e68a184a89b1e94f64d9909, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7248916013068250043, guid: e86167924e68a184a89b1e94f64d9909, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3306,6 +3318,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e86167924e68a184a89b1e94f64d9909, type: 3}
+--- !u!114 &1190176238066591644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1190176239802240533, guid: e86167924e68a184a89b1e94f64d9909, type: 3}
+  m_PrefabInstance: {fileID: 1804872073}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1751695753565788781 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1751695752902308836, guid: e86167924e68a184a89b1e94f64d9909, type: 3}
+  m_PrefabInstance: {fileID: 1804872073}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7248916014552236594 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7248916013068250043, guid: e86167924e68a184a89b1e94f64d9909, type: 3}
