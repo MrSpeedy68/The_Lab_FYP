@@ -8,6 +8,11 @@ public class MainMenuUI : MonoBehaviour
 {
     public void PlayButton()
     {
+        PlayerData.health = 100f;
+        PlayerData.pistolAmmo = 30;
+        PlayerData.rifleAmmo = 90;
+        PlayerData.shotgunAmmo = 20;
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -16,8 +21,13 @@ public class MainMenuUI : MonoBehaviour
         Application.Quit();
     }
 
-    public void LevelSelect()
+    public void Continue()
     {
+        PlayerData.health = PlayerPrefs.GetFloat("health");
+        PlayerData.pistolAmmo = PlayerPrefs.GetInt("pistolAmmo");
+        PlayerData.rifleAmmo = PlayerPrefs.GetInt("rifleAmmo");
+        PlayerData.shotgunAmmo = PlayerPrefs.GetInt("shotgunAmmo");
         
+        SceneManager.LoadScene(PlayerPrefs.GetInt("level"));
     }
 }

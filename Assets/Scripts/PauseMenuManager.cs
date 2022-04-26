@@ -90,6 +90,7 @@ public class PauseMenuManager : MonoBehaviour
         PlayerPrefs.SetInt("shotgunAmmo", PlayerData.shotgunAmmo);
         PlayerPrefs.SetInt("rifleAmmo", PlayerData.rifleAmmo);
         PlayerPrefs.SetFloat("health", PlayerData.health);
+        PlayerPrefs.SetInt("level", SceneManager.GetActiveScene().buildIndex);
         
         var playerObj = GameObject.FindGameObjectWithTag("Player");
         
