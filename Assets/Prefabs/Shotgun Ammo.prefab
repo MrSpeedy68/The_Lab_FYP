@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6333205549916244689}
   - component: {fileID: 1964592491324266802}
   - component: {fileID: 467731654331110246}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Shotgun Ammo
   m_TagString: Magazine
   m_Icon: {fileID: 0}

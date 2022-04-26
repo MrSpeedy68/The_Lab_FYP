@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2710129955255000841}
-  offset: {x: 0, y: -0.68, z: 0}
+  offset: {x: -0.1, y: -0.8, z: 0}
 --- !u!23 &32542952
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -111,7 +111,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &32542950
 MonoBehaviour:
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 136419598}
   - component: {fileID: 136419597}
   - component: {fileID: 136419596}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Right Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 1
   m_AttachTransform: {fileID: 0}
-  m_KeepSelectedTargetValid: 1
+  m_KeepSelectedTargetValid: 0
   m_StartingSelectedInteractable: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 1515744298}
   - component: {fileID: 1515744297}
   - component: {fileID: 1515744296}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Left Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 1
   m_AttachTransform: {fileID: 0}
-  m_KeepSelectedTargetValid: 1
+  m_KeepSelectedTargetValid: 0
   m_StartingSelectedInteractable: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
@@ -3197,6 +3197,7 @@ MonoBehaviour:
   - {fileID: 8419324794162387441, guid: 9716c3e644fc1414c80ab88845d6e27c, type: 3}
   - {fileID: 137652038258309114, guid: 29e2aaf4aa23e1347a3cae125cab0568, type: 3}
   - {fileID: 4002979001225744738, guid: 272db9fb6243e6949b08b653d6400682, type: 3}
+  magStorage: {fileID: 32542948}
   hands:
   - {fileID: 2710129955817253762}
   - {fileID: 2710129954758709124}
@@ -3236,7 +3237,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4294967294
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -3358,7 +3359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2710129955255000841}
-  offset: {x: 0, y: -0.68, z: 0}
+  offset: {x: -0.1, y: -0.8, z: 0}
 --- !u!23 &4075448243572919193
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3412,7 +3413,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1804872073
 PrefabInstance:

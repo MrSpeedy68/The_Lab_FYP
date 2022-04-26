@@ -8,6 +8,7 @@ public class MagazineSpawner : MonoBehaviour
 {
     private Vector3 magSpawn;
     public GameObject[] magazineObj;
+    public GameObject magStorage;
     private XRGrabInteractable grabScript;
     private StoreMagazine _storeMagazine;
     
@@ -71,6 +72,7 @@ public class MagazineSpawner : MonoBehaviour
 
     public void SpawnMag()
     {
+        StartCoroutine(DelayStore());
         magSpawn = grabScript.interactorsSelecting[0].transform.position;
         int val = (int)magType;
 
@@ -78,13 +80,14 @@ public class MagazineSpawner : MonoBehaviour
         {
             var newMag = Instantiate(magazineObj[val], magSpawn, Quaternion.identity);
             var magComp = newMag.GetComponent<MagazineComponent>();
-        
+    
             magComp.currentAmmoCount = _player.RemoveAmmo(val, magComp._maxAmmo);
-        
+    
             StopAllCoroutines();
             StartCoroutine(ReleaseSpawner());
             StartCoroutine(DelayStore());
         }
+        
     }
 
     IEnumerator ReleaseSpawner()
@@ -99,9 +102,11 @@ public class MagazineSpawner : MonoBehaviour
     IEnumerator DelayStore()
     {
         _storeMagazine.enabled = false;
+        magStorage.SetActive(false);
         yield return new WaitForSeconds(1.5f);
         _storeMagazine.enabled = true;
-
+        magStorage.SetActive(true);
+        
         yield return null;
     }
 }

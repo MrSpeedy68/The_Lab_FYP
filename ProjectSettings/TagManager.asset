@@ -28,8 +28,8 @@ TagManager:
   - Grabbablehandler
   - Magazine
   - Enemy
-  - 
-  - 
+  - Inventory
+  - MagSpawner
   - 
   - 
   - 
