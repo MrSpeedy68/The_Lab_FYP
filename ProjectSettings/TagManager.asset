@@ -9,6 +9,7 @@ TagManager:
   - Magazine
   - Enemy
   - Target
+  - PressureObj
   layers:
   - Default
   - TransparentFX
