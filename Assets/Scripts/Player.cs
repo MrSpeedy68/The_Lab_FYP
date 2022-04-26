@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,19 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector3 respawnLoc;
 
     private MagazineSpawner _magazineSpawner;
-    
+
+    public int rifleAmmo;
+    public int shotgunAmmo;
+    public int pistolAmmo;
+
+
+    private void Update()
+    {
+        rifleAmmo = PlayerData.rifleAmmo;
+        pistolAmmo = PlayerData.pistolAmmo;
+        shotgunAmmo = PlayerData.shotgunAmmo;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

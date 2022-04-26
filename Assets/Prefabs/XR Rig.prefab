@@ -2762,6 +2762,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnLoc: {x: 0, y: 0, z: 0}
+  rifleAmmo: 0
+  shotgunAmmo: 0
+  pistolAmmo: 0
 --- !u!114 &297008201
 MonoBehaviour:
   m_ObjectHideFlags: 0

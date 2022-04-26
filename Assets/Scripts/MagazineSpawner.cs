@@ -9,6 +9,7 @@ public class MagazineSpawner : MonoBehaviour
     private Vector3 magSpawn;
     public GameObject[] magazineObj;
     private XRGrabInteractable grabScript;
+    private StoreMagazine _storeMagazine;
     
     [SerializeField]
     private XRDirectInteractor[] hands;
@@ -28,6 +29,7 @@ public class MagazineSpawner : MonoBehaviour
     {
         _player = GetComponentInParent<Player>();
         grabScript = GetComponent<XRGrabInteractable>();
+        _storeMagazine = GameObject.Find("MagazineStorage").GetComponent<StoreMagazine>();
     }
 
     private void FixedUpdate()
@@ -53,7 +55,7 @@ public class MagazineSpawner : MonoBehaviour
 
     public void CheckGunType(string objName)
     {
-        if (objName == "Shotgun")
+        if (objName == "870_Shotgun")
         {
             magType = MagazineType.SHOTGUN;
         }
@@ -81,6 +83,7 @@ public class MagazineSpawner : MonoBehaviour
         
             StopAllCoroutines();
             StartCoroutine(ReleaseSpawner());
+            StartCoroutine(DelayStore());
         }
     }
 
@@ -88,8 +91,17 @@ public class MagazineSpawner : MonoBehaviour
     {
         grabScript.enabled = false;
         
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
 
         grabScript.enabled = true;
+    }
+
+    IEnumerator DelayStore()
+    {
+        _storeMagazine.enabled = false;
+        yield return new WaitForSeconds(1.5f);
+        _storeMagazine.enabled = true;
+
+        yield return null;
     }
 }
