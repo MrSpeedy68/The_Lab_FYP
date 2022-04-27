@@ -31,4 +31,10 @@ public class MagazineComponent : MonoBehaviour
             if (_ammoText) _ammoText.text = currentAmmoCount + "/" + _maxAmmo;
         }
     }
+
+    public bool IsMaxAmmo()
+    {
+        if (currentAmmoCount == _maxAmmo) return true;
+        else return false;
+    }
 }

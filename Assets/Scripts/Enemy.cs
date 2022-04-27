@@ -71,6 +71,21 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Weapon") && other.relativeVelocity.magnitude > 2f && health > 0f)
+        {
+            float damageDealt = other.relativeVelocity.magnitude * other.rigidbody.mass;
+            print("Damage Dealt = " + damageDealt);
+            health -= damageDealt;
+            if (health <= 0f)
+            {
+                Die();
+            }
+        }
+    }
+
+
     public void ApplyForcesFromGun()
     {
         

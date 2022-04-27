@@ -12,7 +12,7 @@ public class RagdollEnabler : MonoBehaviour
     void Start()
     {
         rigRigidbodies = GetComponentsInChildren<Rigidbody>();
-        //DisableRagdoll();
+        DisableRagdoll();
     }
 
     public void DisableRagdoll()

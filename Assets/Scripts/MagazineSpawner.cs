@@ -56,15 +56,15 @@ public class MagazineSpawner : MonoBehaviour
 
     public void CheckGunType(string objName)
     {
-        if (objName == "870_Shotgun")
+        if (objName.Contains("870_Shotgun"))
         {
             magType = MagazineType.SHOTGUN;
         }
-        else if (objName == "Pistol")
+        else if (objName.Contains("Pistol"))
         {
             magType = MagazineType.PISTOL;
         }
-        else if (objName == "M4A1 Rifle")
+        else if (objName.Contains("M4A1 Rifle"))
         {
             magType = MagazineType.RIFLE;
         }
