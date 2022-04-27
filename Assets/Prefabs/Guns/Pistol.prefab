@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 6581077160795247151}
   - component: {fileID: 6581077160795247150}
   - component: {fileID: 6581077160795247153}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Magazine Snap Zone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
