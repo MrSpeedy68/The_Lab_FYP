@@ -2468,18 +2468,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2438762043860648896, guid: 947092d4abbc08046aa79d8a47c51152, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2438762043860648896, guid: 947092d4abbc08046aa79d8a47c51152, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710129954758709124, guid: 947092d4abbc08046aa79d8a47c51152, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 2087911409}
     - target: {fileID: 2710129955408895201, guid: 947092d4abbc08046aa79d8a47c51152, type: 3}
       propertyPath: m_Name
       value: XR Rig
@@ -2494,7 +2482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2710129955408895215, guid: 947092d4abbc08046aa79d8a47c51152, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.296
+      value: 1.034
       objectReference: {fileID: 0}
     - target: {fileID: 2710129955408895215, guid: 947092d4abbc08046aa79d8a47c51152, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2526,26 +2514,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2710129955408895215, guid: 947092d4abbc08046aa79d8a47c51152, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710129955817253762, guid: 947092d4abbc08046aa79d8a47c51152, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 2087911409}
-    - target: {fileID: 5497570179398385902, guid: 947092d4abbc08046aa79d8a47c51152, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741835509488540115, guid: 947092d4abbc08046aa79d8a47c51152, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741835509488540115, guid: 947092d4abbc08046aa79d8a47c51152, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741835509488540115, guid: 947092d4abbc08046aa79d8a47c51152, type: 3}
-      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
