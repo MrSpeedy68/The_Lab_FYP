@@ -64,7 +64,7 @@ public class MagazineSpawner : MonoBehaviour
         {
             magType = MagazineType.PISTOL;
         }
-        else if (objName == "Rifle")
+        else if (objName == "M4A1 Rifle")
         {
             magType = MagazineType.RIFLE;
         }

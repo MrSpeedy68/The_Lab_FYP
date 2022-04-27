@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6913533406939044258}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: bullet_shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2529715230661074848}
   - component: {fileID: 671879509526803979}
   - component: {fileID: 8917976114171189098}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Cube_005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3034452765807200182}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: muni_rot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8244525175887078168}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6581077159749402499}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: BulletEjectTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6581077160011642940}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: MagazineAttachTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6581077160391406763}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: ShootTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 6581077160795247151}
   - component: {fileID: 6581077160795247150}
   - component: {fileID: 6581077160795247153}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Magazine Snap Zone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,9 +458,9 @@ GameObject:
   - component: {fileID: 5821876577086772361}
   - component: {fileID: 6581077160225442052}
   - component: {fileID: 6581077160225442172}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Pistol
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -574,7 +574,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4294967295
+    m_Bits: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -861,7 +861,7 @@ GameObject:
   - component: {fileID: 2245359066176062577}
   - component: {fileID: 7609825133296045373}
   - component: {fileID: 8285801434102936437}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Gun_trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
